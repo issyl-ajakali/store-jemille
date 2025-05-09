@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MilleBites</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Replace with your photo */
+            background-size: cover;
+            background-position: center;
+            color: #1a1a1a;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .logo {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .logo h1 {
+            font-size: 2.5rem;
+        }
+        .logo p {
+            font-style: italic;
+        }
+        .menu-section {
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 900px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        .menu-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .menu-item p {
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="#">HOME</a>
+            <a href="#">MERYENDA</a>
+            <a href="#">MEALS</a>
+            <a href="#">DRINKS</a>
+            <a href="#">DESSERTS</a>
+            <a href="#">FEEDBACK</a>
+            <a href="#">CONTACT US</a>
+        </div>
+        <div class="nav-right">
+            <div class="cart-icon">Cart Icon</div>
+            <div class="login-icon">Login Icon</div>
+        </div>
+    </header>
+
+    <div class="logo">
+        <div class="logo-img">LOGO IMAGE</div>
+        <h1>MILLEBITES</h1>
+        <p>SAVOR THE FLAVOR, BITE BY BITE!</p>
+    </div>
+
+    <div class="menu-section">
+        <h2>Looking for Filipino cuisine with a high-end twist?</h2>
+        <p>MilleBites is the right karinderya for you!</p>
+        <h2>MENU</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="meryenda.jpg" alt="Meryenda">
+                <h3>MERYENDA</h3>
+                <p>Want some easy-made foods to fill your empty stomach? Try Filipino meryendas!</p>
+            </div>
+            <div class="menu-item">
+                <img src="meals.jpg" alt="Meals">
+                <h3>MEALS</h3>
+                <p>Looking for the best Breakfast, Lunch, and Dinner? Take a look at our meals now!</p>
+            </div>
+            <div class="menu-item">
+                <img src="drinks.jpg" alt="Drinks">
+                <h3>DRINKS</h3>
+                <p>Quench your thirst with our uniquely Filipino drink selections!</p>
+            </div>
+            <div class="menu-item">
+                <img src="desserts.jpg" alt="Desserts">
+                <h3>DESSERTS</h3>
+                <p>Cap off your meal with delightful and colorful desserts made with Filipino flavors.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

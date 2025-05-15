@@ -1,0 +1,99 @@
+/* Import fonts - Replace this with actual JELLE ROMAN font when available */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Filipino cuisine inspired colors */
+    --background: 0 0% 100%;
+    --foreground: 345 80% 30%; /* a4133c - Deep red */
+    --card: 0 0% 100%;
+    --card-foreground: 345 80% 30%; /* a4133c - Deep red */
+    --popover: 0 0% 100%;
+    --popover-foreground: 345 80% 30%; /* a4133c - Deep red */
+    --primary: 345 80% 30%; /* a4133c - Deep red */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 342 76% 44%; /* c9184a - Crimson */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 342 76% 44%; /* c9184a - Crimson with opacity */
+    --muted-foreground: 0 0% 50%;
+    --accent: 348 100% 65%; /* ff4d6d - Bright pink */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 349 100% 75%; /* ff758f - Light pink */
+    --input: 349 100% 75%; /* ff758f - Light pink */
+    --ring: 348 100% 82%; /* ff8fa3 - Pale pink */
+    --radius: 0.5rem;
+    --chart-1: 345 80% 30%; /* a4133c - Deep red */
+    --chart-2: 342 76% 44%; /* c9184a - Crimson */
+    --chart-3: 348 100% 65%; /* ff4d6d - Bright pink */
+    --chart-4: 349 100% 75%; /* ff758f - Light pink */
+    --chart-5: 348 100% 82%; /* ff8fa3 - Pale pink */
+  }
+
+  .dark {
+    --background: 345 80% 15%;
+    --foreground: 0 0% 95%;
+    --card: 345 80% 20%;
+    --card-foreground: 0 0% 95%;
+    --popover: 345 80% 15%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 345 80% 30%; /* a4133c - Deep red */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 342 76% 44%; /* c9184a - Crimson */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 345 80% 20%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 348 100% 65%; /* ff4d6d - Bright pink */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 345 80% 25%;
+    --input: 345 80% 25%;
+    --ring: 348 100% 65%; /* ff4d6d - Bright pink */
+    --chart-1: 345 80% 30%; /* a4133c - Deep red */
+    --chart-2: 342 76% 44%; /* c9184a - Crimson */
+    --chart-3: 348 100% 65%; /* ff4d6d - Bright pink */
+    --chart-4: 349 100% 75%; /* ff758f - Light pink */
+    --chart-5: 348 100% 82%; /* ff8fa3 - Pale pink */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif; /* Replace with JELLE ROMAN when available */
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+    font-family: 'Poppins', sans-serif; /* Replace with JELLE ROMAN when available */
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}

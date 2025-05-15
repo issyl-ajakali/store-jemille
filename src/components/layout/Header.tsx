@@ -1,120 +1,110 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, User, Menu as MenuIcon, X } from 'lucide-react';
-import { useCart } from '../../context/CartContext';
-import Logo from '../ui/Logo';
+"use client";
 
-const Header: React.FC = () => {
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { ShoppingCart, User, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { cartItems } = useCart();
-  const location = useLocation();
 
-  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
+  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Navigation links
   const navLinks = [
-    { name: 'HOME', path: '/' },
-    { name: 'MENU', path: '/menu' },
-    { name: 'FEEDBACKS', path: '/feedback' },
-    { name: 'CONTACT US', path: '/contact' },
+    { name: "HOME", href: "/" },
+    { name: "MENU", href: "/menu" },
+    { name: "FEEDBACKS", href: "/feedback" },
+    { name: "CONTACT US", href: "/contact" },
   ];
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-amber-900/90 backdrop-blur-md py-2' : 'bg-transparent py-4'
-      }`}
+      className={cn(
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-background/90 backdrop-blur-md shadow-md py-2"
+          : "bg-transparent py-4"
+      )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="block lg:hidden">
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white p-2 focus:outline-none"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
-          </button>
-        </div>
-
-        <div className="hidden lg:flex items-center space-x-8">
-          {navLinks.slice(0, 2).map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`font-medium text-white hover:text-yellow-300 transition-colors relative group ${
-                location.pathname === link.path ? 'text-yellow-300' : ''
-              }`}
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          ))}
-        </div>
-
-        <Link to="/" className="flex flex-col items-center">
-          <Logo className="h-16 w-16" />
+      <div className="container mx-auto flex items-center justify-between px-4">
+        {/* Logo */}
+        <Link href="/" className="relative z-50">
+          <div className="flex items-center">
+            <div className="w-10 h-10 relative mr-2">
+              {/* Replace with actual logo */}
+              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-white font-bold">M</span>
+              </div>
+            </div>
+            <span className="text-primary font-bold text-xl">MIILEBITES</span>
+          </div>
         </Link>
 
-        <div className="hidden lg:flex items-center space-x-8">
-          {navLinks.slice(2).map((link) => (
-            <Link
-              key={link.name}
-              to={link.path}
-              className={`font-medium text-white hover:text-yellow-300 transition-colors relative group ${
-                location.pathname === link.path ? 'text-yellow-300' : ''
-              }`}
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          ))}
-        </div>
-
-        <div className="flex items-center space-x-4">
-          <Link 
-            to="/cart" 
-            className="relative p-2 text-white hover:text-yellow-300 transition-colors"
-          >
-            <ShoppingCart className="transform hover:scale-110 transition-transform" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </Link>
-          <Link 
-            to="/login" 
-            className="p-2 text-white hover:text-yellow-300 transition-colors"
-          >
-            <User className="transform hover:scale-110 transition-transform" />
-          </Link>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-amber-900/95 backdrop-blur-md transition-all duration-300 ${
-          mobileMenuOpen ? 'max-h-screen py-4' : 'max-h-0 overflow-hidden'
-        }`}
-      >
-        <div className="container mx-auto px-4 flex flex-col space-y-4">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to={link.path}
-              className={`font-medium text-white hover:text-yellow-300 transition-colors py-2 ${
-                location.pathname === link.path ? 'text-yellow-300' : ''
-              }`}
+              href={link.href}
+              className="text-foreground font-medium hover:text-primary transition-colors duration-200 relative group"
+            >
+              {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+          ))}
+        </nav>
+
+        {/* Icons */}
+        <div className="flex items-center space-x-4 relative z-50">
+          <Button variant="ghost" size="icon" className="relative group">
+            <ShoppingCart className="w-6 h-6 text-foreground group-hover:text-primary transition-colors duration-200" />
+            <span className="absolute -top-1 -right-1 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              0
+            </span>
+          </Button>
+
+          <Button variant="ghost" size="icon">
+            <User className="w-6 h-6 text-foreground hover:text-primary transition-colors duration-200" />
+          </Button>
+
+          {/* Mobile menu toggle */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6 text-foreground" />
+            ) : (
+              <Menu className="w-6 h-6 text-foreground" />
+            )}
+          </Button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div
+          className={cn(
+            "fixed inset-0 bg-background/95 backdrop-blur-sm flex flex-col items-center justify-center space-y-8 transition-all duration-300 md:hidden",
+            mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          )}
+        >
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-foreground text-2xl font-medium hover:text-primary transition-colors duration-200"
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}
@@ -124,6 +114,4 @@ const Header: React.FC = () => {
       </div>
     </header>
   );
-};
-
-export default Header;
+}

@@ -1,75 +1,91 @@
-import React from 'react';
-import { Facebook, Instagram, Twitter } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import Logo from '../ui/Logo';
+import Link from "next/link";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
-const Footer: React.FC = () => {
+export function Footer() {
   return (
-    <footer className="bg-amber-900 text-white">
-      <div className="container mx-auto py-10 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-primary/10 pt-10 pb-6">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Brand Section */}
           <div className="flex flex-col items-center md:items-start">
-            <Logo className="h-14 w-14 mb-4" />
-            <p className="text-amber-100 text-sm mt-2">
-              Authentic Filipino cuisine delivered to your doorstep. Experience the rich flavors of the Philippines.
+            <h3 className="text-2xl font-bold text-primary mb-2">MIILEBITES</h3>
+            <p className="text-foreground/80 text-sm mb-4 italic">
+              SAVOR THE FLAVOR, BITE BY BITE!
             </p>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-yellow-300">Quick Links</h3>
-            <ul className="space-y-2">
-              <li><Link to="/" className="text-amber-100 hover:text-yellow-300 transition-colors">Home</Link></li>
-              <li><Link to="/menu" className="text-amber-100 hover:text-yellow-300 transition-colors">Menu</Link></li>
-              <li><Link to="/feedback" className="text-amber-100 hover:text-yellow-300 transition-colors">Feedbacks</Link></li>
-              <li><Link to="/contact" className="text-amber-100 hover:text-yellow-300 transition-colors">Contact Us</Link></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-yellow-300">Contact Info</h3>
-            <ul className="space-y-2 text-amber-100">
-              <li>123 Filipino Street, Manila</li>
-              <li>Phone: +63 12 345 6789</li>
-              <li>Email: info@miilebites.com</li>
-              <li>Hours: Mon-Sun 8AM - 10PM</li>
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-yellow-300">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-amber-100 hover:text-yellow-300 transition-colors">
-                <Facebook />
-              </a>
-              <a href="#" className="text-amber-100 hover:text-yellow-300 transition-colors">
-                <Instagram />
-              </a>
-              <a href="#" className="text-amber-100 hover:text-yellow-300 transition-colors">
-                <Twitter />
-              </a>
+            <div className="flex space-x-4 mt-2">
+              <Link
+                href="#"
+                className="text-foreground/70 hover:text-primary transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook size={20} />
+              </Link>
+              <Link
+                href="#"
+                className="text-foreground/70 hover:text-primary transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
+              </Link>
+              <Link
+                href="#"
+                className="text-foreground/70 hover:text-primary transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter size={20} />
+              </Link>
             </div>
-            <div className="mt-4">
-              <h4 className="text-sm font-semibold mb-2 text-yellow-300">Subscribe to our newsletter</h4>
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="px-3 py-2 bg-amber-800 text-white placeholder:text-amber-300 border-amber-700 rounded-l-md focus:outline-none focus:ring-1 focus:ring-yellow-400 w-full"
-                />
-                <button className="bg-yellow-500 hover:bg-yellow-600 text-amber-900 font-bold py-2 px-4 rounded-r-md transition-colors">
-                  Join
-                </button>
-              </div>
-            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-lg font-bold text-foreground mb-4">Quick Links</h3>
+            <nav className="flex flex-col space-y-2">
+              <Link
+                href="/"
+                className="text-foreground/70 hover:text-primary transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                href="/menu"
+                className="text-foreground/70 hover:text-primary transition-colors"
+              >
+                Menu
+              </Link>
+              <Link
+                href="/feedback"
+                className="text-foreground/70 hover:text-primary transition-colors"
+              >
+                Feedbacks
+              </Link>
+              <Link
+                href="/contact"
+                className="text-foreground/70 hover:text-primary transition-colors"
+              >
+                Contact Us
+              </Link>
+            </nav>
+          </div>
+
+          {/* Contact Info */}
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-lg font-bold text-foreground mb-4">Contact Us</h3>
+            <address className="not-italic text-foreground/70 flex flex-col space-y-2">
+              <p>123 Filipino Street</p>
+              <p>Manila, Philippines</p>
+              <p>Phone: +63 123 456 7890</p>
+              <p>Email: info@miilebites.com</p>
+            </address>
           </div>
         </div>
-        
-        <div className="border-t border-amber-800 mt-8 pt-8 text-center text-amber-200 text-sm">
-          <p>&copy; 2025 MIILEBITES. All rights reserved.</p>
+
+        <div className="border-t border-foreground/10 mt-8 pt-6 text-center">
+          <p className="text-foreground/60 text-sm">
+            &copy; {new Date().getFullYear()} MIILEBITES. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

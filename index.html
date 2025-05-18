@@ -1736,14 +1736,25 @@
         
         <div class="meryenda-grid">
             <!-- Bibingka & Bumbong Combo -->
-            <div class="meryenda-item">
-                <div class="restaurant-image">[MERYENDA IMAGE 1]</div>
-                <button class="favorite-btn">♥</button>
-                <div class="meryenda-name">Bibingka & Bumbong Combo</div>
-                <div class="meryenda-price">228.00 PHP</div>
-                <button class="add-to-cart" data-name="Bibingka & Bumbong Combo" data-price="228.00">Add to Cart</button>
-            </div>
-            
+            <style>
+.restaurant-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* optional: rounded corners */
+    object-fit: cover;  /* keeps image nicely cropped */
+}
+</style>
+
+<div class="meryenda-item">
+    <div class="restaurant-image">
+        <img src="Bibingka & Bumbong Combo.png" alt="Bibingka & Bumbong Combo" />
+    </div>
+    <button class="favorite-btn">♥</button>
+    <div class="meryenda-name">Bibingka & Bumbong Combo</div>
+    <div class="meryenda-price">228.00 PHP</div>
+    <button class="add-to-cart" data-name="Bibingka & Bumbong Combo" data-price="228.00">Add to Cart</button>
+</div>
+
             <!-- Luxe Empanada -->
             <div class="meryenda-item">
                 <div class="restaurant-image">[MERYENDA IMAGE 2]</div>
